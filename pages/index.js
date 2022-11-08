@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
 import { StyledTimeline } from '../src/components/Timeline';
+import Favourites from '../src/components/Favourites';
 
 const HomePage = () => {
     return (
@@ -12,6 +13,7 @@ const HomePage = () => {
                 <Menu />
                 <Header />
                 <Timeline playlist={config.playlist} />
+                <Favourites favourites={config.favourites} />
             </div>
         </>
     )
@@ -20,7 +22,21 @@ const HomePage = () => {
 export default HomePage
 
 const StyledHeader = styled.div`
-    img {
+    margin-top: 54px;
+
+    .banner {
+        height: 150px;
+        background-image: url(${config.bannerUrl});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        img {
+            height: fit-content;
+        }
+    }
+
+    .userPhoto {
         width: 80px;
         height: 80px;
         border-radius: 50%;
@@ -36,9 +52,9 @@ const StyledHeader = styled.div`
 const Header = () => {
     return (
         <StyledHeader>
-            {/* <img src="banner" alt="Banner" /> */}
+            <section className='banner' />
             <section className='userInfo'>
-                <img src={`https://github.com/${config.github}.png`} alt="My photo" />
+                <img className='userPhoto' src={`https://github.com/${config.github}.png`} alt="My photo" />
                 <div>
                     <h2>{config.name}</h2>
                     <p>{config.job}</p>
@@ -62,9 +78,9 @@ const Timeline = props => {
                         <h2>{playlistName}</h2>
 
                         <div>
-                            {videos.map(video => {
+                            {videos.map((video, index) => {
                                 return (
-                                    <a href={video.url}>
+                                    <a key={index} href={video.url}>
                                         <img src={video.thumb} alt={video.title} />
                                         <span>{video.title}</span>
                                     </a>

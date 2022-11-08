@@ -2,6 +2,19 @@
     "name": "Tammy Kanashiro",
     "job": "Software Engineer",
     "github": "tammyKanashiro",
+    "bannerUrl": "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2059&q=80",
+    "favourites": [
+        {
+            "channel": "@john",
+            "url": "https://www.youtube.com/c/Alura",
+            "photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+        },
+        {
+            "channel": "@kate",
+            "url": "https://www.youtube.com/c/Alura",
+            "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80"
+        }
+    ],
     "playlist": {
         "games": [
             {
