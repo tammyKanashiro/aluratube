@@ -1,18 +1,24 @@
-import config from '../config.json';
+import { useState } from 'react';
 import styled from 'styled-components';
+
+import config from '../config.json';
+
 import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
-import { StyledTimeline } from '../src/components/Timeline';
+import Timeline from '../src/components/Timeline';
 import Favourites from '../src/components/Favourites';
 
+
 const HomePage = () => {
+    const [searchValue, setSearchValue] = useState("");
+
     return (
         <>
             <CSSReset />
             <div>
-                <Menu />
+                <Menu setSearchValue={setSearchValue} />
                 <Header />
-                <Timeline playlist={config.playlist} />
+                <Timeline searchValue={searchValue} playlist={config.playlist} />
                 <Favourites favourites={config.favourites} />
             </div>
         </>
@@ -22,10 +28,10 @@ const HomePage = () => {
 export default HomePage
 
 const StyledHeader = styled.div`
-    margin-top: 54px;
+    margin-top: 50px;
 
     .banner {
-        height: 150px;
+        height: 230px;
         background-image: url(${config.bannerUrl});
         background-repeat: no-repeat;
         background-size: cover;
@@ -61,35 +67,5 @@ const Header = () => {
                 </div>
             </section>
         </StyledHeader>
-    )
-}
-
-const Timeline = props => {
-    const { playlist } = props;
-    const playlistNames = Object.keys(playlist);
-
-    return (
-        <StyledTimeline>
-            {playlistNames && playlistNames.map(playlistName => {
-                const videos = playlist[playlistName];
-
-                return (
-                    <section key={playlistName}>
-                        <h2>{playlistName}</h2>
-
-                        <div>
-                            {videos.map((video, index) => {
-                                return (
-                                    <a key={index} href={video.url}>
-                                        <img src={video.thumb} alt={video.title} />
-                                        <span>{video.title}</span>
-                                    </a>
-                                );
-                            })}
-                        </div>
-                    </section>
-                );
-            })}
-        </StyledTimeline>
     )
 }

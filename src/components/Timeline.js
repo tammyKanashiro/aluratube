@@ -45,3 +45,39 @@ export const StyledTimeline = styled.div`
     }
   }
 `;
+
+const Timeline = props => {
+  const { searchValue, playlist } = props;
+  const playlistNames = Object.keys(playlist);
+
+  return (
+    <StyledTimeline>
+      {playlistNames && playlistNames.map(playlistName => {
+        const videos = playlist[playlistName];
+
+        return (
+          <section key={playlistName}>
+            <h2>{playlistName}</h2>
+
+            <div>
+              {videos.filter((video) => {
+                const titleNormalized = video.title.toLowerCase();
+                const searchValueNormalized = searchValue.toLowerCase();
+                return titleNormalized.includes(searchValueNormalized);
+              }).map((video, index) => {
+                return (
+                  <a key={index} href={video.url}>
+                    <img src={video.thumb} alt={video.title} />
+                    <span>{video.title}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </StyledTimeline>
+  )
+}
+
+export default Timeline;

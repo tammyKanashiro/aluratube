@@ -38,7 +38,7 @@ const StyledFavourites = styled.div`
 
 const Favourites = props => {
     const { favourites } = props;
-    console.log("favourites", favourites)
+
     return (
         <StyledFavourites>
             <h2>AluraTuber Favourites</h2>
