@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import config from '../config.json';
 
-import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
 import Timeline from '../src/components/Timeline';
 import Favourites from '../src/components/Favourites';
@@ -14,7 +13,6 @@ const HomePage = () => {
 
     return (
         <>
-            <CSSReset />
             <div>
                 <Menu setSearchValue={setSearchValue} />
                 <Header />
@@ -29,6 +27,7 @@ export default HomePage
 
 const StyledHeader = styled.div`
     margin-top: 50px;
+    background-color: ${({ theme }) => theme.backgroundLevel1};
 
     .banner {
         height: 230px;
